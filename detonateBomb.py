@@ -11,12 +11,9 @@ class Solution:
 
         for b in bombs:
             print(b)
-            if b[0]>=(x-r) & b[0]<=(x+r):
-                print("x is right")
-                if b[1]>=(y-r)& b[1]<=(y+r):
-                    print("y is within range")
-                    count +=1
-        
+            l = (b[0]-x)**2 + (b[1]-y)**2
+            if l <= (r**2):
+                count+=1
         
         return count
     def maximumDetonation(self, bombs: list[list[int]]) -> int:
@@ -24,10 +21,12 @@ class Solution:
         max = 0
         for b in bombs:
             num = Solution.findDetonation(Solution,bombs,b)
+            print(num)
             if (num > max):
                 max = num        
         return max
 
-bombs = [[1,1,5],[10,10,5]]
+#bombs = [[1,1,100000],[100000,100000,1]]
+bombs = [[1,2,3],[2,3,1],[3,4,2],[4,5,3],[5,6,4]]
 
 print(Solution.maximumDetonation(Solution, bombs))
