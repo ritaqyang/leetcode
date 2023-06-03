@@ -10,6 +10,7 @@ class Solution:
                 if (dfs(j)>max):
                     max = dfs(j)
             return max + informTime[i]
+        #return max([dfs(j) for j in children[i]] or [0]) + informTime[i]
         
 
         return dfs(headID)
